@@ -66,8 +66,8 @@
       "--label=traefik.http.routers.pihole.tls=true"
       "--label=traefik.http.routers.pihole.tls.certresolver=step"
       "--label=traefik.http.services.pihole.loadbalancer.server.port=80"
-      "--label=traefik.http.middlewares.pihole-slash.redirectregex.regex=^https://pihole.home$$"
-      "--label=traefik.http.middlewares.pihole-slash.redirectregex.replacement=https://pihole.home/admin/"
+	"--label=traefik.http.middlewares.pihole-slash.redirectregex.regex=^https://pihole.home$"
+	"--label=traefik.http.middlewares.pihole-slash.redirectregex.replacement=https://pihole.home/admin/"
       "--label=traefik.http.routers.pihole.middlewares=pihole-slash"
     ];
   };
