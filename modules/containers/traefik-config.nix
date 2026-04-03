@@ -35,7 +35,7 @@ api:
   insecure: false
 
 log:
-  level: INFO
+  level: DEBUG
 
 entryPoints:
   web:
