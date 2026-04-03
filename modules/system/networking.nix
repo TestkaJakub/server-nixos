@@ -38,7 +38,7 @@
       DNSStubListener=no
     '';
   };
-  security.pki.certificateFiles = [
-    "/home/jakub/.step/certs/root_ca.crt"
-  ];
+	security.pki.certificateFiles = [
+	  ../meta/homelab-root.crt
+	];
 }
