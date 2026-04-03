@@ -44,7 +44,8 @@ certificatesResolvers:
       # step-ca ACME directory — reachable via host.docker.internal
       caServer: "https://host.docker.internal:9000/acme/acme/directory"
       certificatesDuration: 24
-      tlsChallenge: {}
+      httpChallenge:
+        entryPoint: web
 
 # Trust our local step-ca root cert for the caServer connection itself
 serversTransport:
