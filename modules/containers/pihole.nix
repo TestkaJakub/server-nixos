@@ -40,37 +40,24 @@
     autoStart = true;
 
     environmentFiles = [ "/home/jakub/secrets/pihole.env" ];
-	ports = [
-	  "53:53/udp"
-	  "53:53/tcp"
-	];
 	
 	environment = {
-	  TZ = "Europe/Warsaw";
+	  TZ               = "Europe/Warsaw";
 	  PIHOLE_DNS_1     = "1.1.1.1";
 	  PIHOLE_DNS_2     = "1.0.0.1";
 	  BLOCKING_ENABLED = "false";
 	  VIRTUAL_HOST     = "pihole.home";
 	  CORS_HOSTS       = "pihole.home";
-	};
-    
+	  FTLCONF_webserver_port = "8053o";
+	};    
     volumes = [
       "/home/jakub/docker-data/pihole/pihole:/etc/pihole"
       "/home/jakub/docker-data/pihole/dnsmasq:/etc/dnsmasq.d"
     ];
 
 	extraOptions = [
-	  "--network=traefik"
+	  "--network=host"
 	  "--cap-add=NET_ADMIN"
-	  "--label=traefik.enable=true"
-	  "--label=traefik.http.routers.pihole.rule=Host(`pihole.home`)"
-	  "--label=traefik.http.routers.pihole.entrypoints=websecure"
-	  "--label=traefik.http.routers.pihole.tls=true"
-	  "--label=traefik.http.routers.pihole.tls.certresolver=step"
-	  "--label=traefik.http.services.pihole.loadbalancer.server.port=80"
-	  "--label=traefik.http.middlewares.pihole-slash.redirectregex.regex=^https://pihole.home/?$"
-	  "--label=traefik.http.middlewares.pihole-slash.redirectregex.replacement=https://pihole.home/admin/"
-	  "--label=traefik.http.routers.pihole.middlewares=pihole-slash"
 	];
   };
 }
