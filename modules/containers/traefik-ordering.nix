@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 # ── Ensure all containers wait for the traefik network ────────────────────────
 # NixOS generates systemd services named docker-<containername> for each
