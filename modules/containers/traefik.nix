@@ -55,6 +55,7 @@ in
     ];
 
     extraOptions = [
+      "--dns=172.17.0.1"
       "--network=traefik"
       # Host networking for step-ca: Traefik needs to reach localhost:9000
       # We use host.docker.internal instead of --network=host so other
