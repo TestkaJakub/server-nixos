@@ -66,7 +66,7 @@
     ];
 
     extraOptions = [
-      "--network=traefik"
+      "--network=host"
       "--cap-add=NET_ADMIN"
 
       "--label=traefik.enable=true"
