@@ -6,6 +6,7 @@
   networking = {
     networkmanager.enable = true;
     useDHCP               = lib.mkDefault true;
+    networking.nameservers = [ "127.0.0.1" "1.1.1.1" ];
 
 	firewall = {
 	  enable          = true;
