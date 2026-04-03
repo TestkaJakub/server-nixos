@@ -85,6 +85,7 @@
 
     extraOptions = [
       "--network=traefik"
+      "--network-alias=backend"
       "--cap-add=NET_RAW"
     ];
   };
