@@ -1,10 +1,10 @@
 { pkgs, config, ... }:
 {
-  services.tailscale = {
-    enable             = true;
-    useRoutingFeatures = "both";
-    extraUpFlags       = [ "--advertise-routes=192.168.0.0/24" ];
-  };
+	services.tailscale = {
+	  enable             = true;
+	  useRoutingFeatures = "both";
+	  extraUpFlags       = [ "--advertise-routes=192.168.0.0/24" "--accept-dns=false" ];
+	};
 
   boot.kernel.sysctl = {
     "net.ipv4.ip_forward"                   = 1;
