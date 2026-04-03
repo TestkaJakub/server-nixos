@@ -28,6 +28,9 @@ let
   stepCert   = "/home/jakub/.step/certs/root_ca.crt";
 in
 {
+  environment = {
+	 LEGO_CA_CERTIFICATES = "/certs/root_ca.crt";
+  };
   systemd.tmpfiles.rules = [
     "d /home/jakub/docker-data/traefik      0755 jakub jakub -"
     "d ${acmeDir}                            0700 jakub jakub -"
