@@ -65,10 +65,9 @@
       "/home/jakub/docker-data/pihole/dnsmasq:/etc/dnsmasq.d"
     ];
 
-    extraOptions = [
+  extraOptions = [
       "--network=host"
       "--cap-add=NET_ADMIN"
-
       "--label=traefik.enable=true"
       "--label=traefik.http.routers.pihole.rule=Host(`pihole.home`)"
       "--label=traefik.http.routers.pihole.entrypoints=websecure"
