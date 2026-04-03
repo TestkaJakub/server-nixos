@@ -40,7 +40,7 @@
     autoStart = true;
 
     environmentFiles = [ "/home/jakub/secrets/pihole.env" ];
-	
+		
 	environment = {
 	  TZ               = "Europe/Warsaw";
 	  PIHOLE_DNS_1     = "1.1.1.1";
@@ -49,7 +49,8 @@
 	  VIRTUAL_HOST     = "pihole.home";
 	  CORS_HOSTS       = "pihole.home";
 	  FTLCONF_webserver_port = "8053o";
-	};    
+	  FTLCONF_dns_listeningMode = "ALL";
+	};  
     volumes = [
       "/home/jakub/docker-data/pihole/pihole:/etc/pihole"
       "/home/jakub/docker-data/pihole/dnsmasq:/etc/dnsmasq.d"
