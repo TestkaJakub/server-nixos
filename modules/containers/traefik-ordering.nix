@@ -8,11 +8,4 @@
     after    = [ "docker-network-traefik.service" ];
     requires = [ "docker-network-traefik.service" ];
   };
-
-	systemd.services.docker-pihole = {
-	  postStart = ''
-	    sleep 3
-	    ${pkgs.docker}/bin/docker network connect traefik pihole || true
-	  '';
-	};
 }
