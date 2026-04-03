@@ -51,15 +51,7 @@
       # Tell Pi-hole its web UI is behind a reverse proxy
       CORS_HOSTS      = "pihole.home";
     };
-
-    ports = [
-      # DNS — reachable on LAN and Tailscale
-      "53:53/udp"
-      "53:53/tcp"
-      # Direct web UI fallback (bypasses Traefik)
-      "8053:80"
-    ];
-
+    
     volumes = [
       "/home/jakub/docker-data/pihole/pihole:/etc/pihole"
       "/home/jakub/docker-data/pihole/dnsmasq:/etc/dnsmasq.d"
