@@ -1,9 +1,9 @@
 { pkgs, ... }:
 
 # ── Traefik Docker network ─────────────────────────────────────────────────────
-# All containers Traefik proxies must share this network.
-# Created once via a oneshot systemd service — survives container restarts.
-# Must start before any container that uses --network=traefik.
+# Created once before any container that needs it starts.
+# Containers depend on this via systemd.services overrides in each file,
+# NOT via dependsOn (which only accepts other container names).
 {
   systemd.services.docker-network-traefik = {
     description = "Create 'traefik' Docker network";

@@ -36,7 +36,6 @@ in
   virtualisation.oci-containers.containers.traefik = {
     image     = "traefik:v3.3";
     autoStart = true;
-    dependsOn = [ "docker-network-traefik" ];
 
     ports = [
       "80:80"

@@ -38,7 +38,6 @@
   virtualisation.oci-containers.containers.pihole = {
     image     = "pihole/pihole:latest";
     autoStart = true;
-    dependsOn = [ "docker-network-traefik" ];
 
     environmentFiles = [ "/home/jakub/secrets/pihole.env" ];
     environment = {
