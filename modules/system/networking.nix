@@ -16,9 +16,12 @@
 	  allowedTCPPorts = [ 22 80 443 53 9000 8053 ];  # added 9000
 	  allowedUDPPorts = [ 53 ];
 
-	  extraCommands = ''
+	 extraCommands = ''
 	    iptables -I INPUT -p udp --dport 53 -j ACCEPT
 	    iptables -I INPUT -p tcp --dport 53 -j ACCEPT
+	    iptables -I INPUT -i tailscale0 -p tcp --dport 80 -j ACCEPT
+	    iptables -I INPUT -i tailscale0 -p tcp --dport 443 -j ACCEPT
+	    iptables -I INPUT -i tailscale0 -p tcp --dport 8080 -j ACCEPT
 	  '';
 
 	  interfaces."eno1".allowedTCPPorts = [
