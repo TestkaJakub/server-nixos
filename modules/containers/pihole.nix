@@ -40,17 +40,15 @@
     autoStart = true;
 
     environmentFiles = [ "/home/jakub/secrets/pihole.env" ];
-    environment = {
-      TZ = "Europe/Warsaw";
-      # Upstream DNS — everything non-.home goes here
-      PIHOLE_DNS_1    = "1.1.1.1";
-      PIHOLE_DNS_2    = "1.0.0.1";
-      # Do not use Pi-hole's built-in blocking lists — pure DNS relay mode
-      BLOCKING_ENABLED = "false";
-      VIRTUAL_HOST    = "pihole.home";
-      # Tell Pi-hole its web UI is behind a reverse proxy
-      CORS_HOSTS      = "pihole.home";
-    };
+	environment = {
+	  TZ = "Europe/Warsaw";
+	  PIHOLE_DNS_1    = "1.1.1.1";
+	  PIHOLE_DNS_2    = "1.0.0.1";
+	  BLOCKING_ENABLED = "false";
+	  VIRTUAL_HOST    = "pihole.home";
+	  CORS_HOSTS      = "pihole.home";
+	  FTLCONF_webserver_port = "8053o";
+	};
     
     volumes = [
       "/home/jakub/docker-data/pihole/pihole:/etc/pihole"
