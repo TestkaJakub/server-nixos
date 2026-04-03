@@ -32,11 +32,6 @@ in
     "d /home/jakub/docker-data/traefik      0755 jakub jakub -"
     "d ${acmeDir}                            0700 jakub jakub -"
   ];
-  systemd.services.docker-traefik = {
-    serviceConfig.ExecStartPost = pkgs.writeShellScript "traefik-post-start" ''
-      sleep 10
-    '';
-  };
 
   virtualisation.oci-containers.containers.traefik = {
     image     = "traefik:v3.3";
