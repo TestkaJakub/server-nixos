@@ -4,7 +4,10 @@
 # Mirrors system/networking.nix on the PC (server subset — no Tailscale/Mullvad).
 {
   networking = {
-    networkmanager.enable = true;
+    networkmanager = {
+    	enable = true;
+    	insertNameservers = [ "127.0.0.1" ];
+    };
     useDHCP               = lib.mkDefault true;
     nameservers = [ "127.0.0.1" "1.1.1.1" ];
 
