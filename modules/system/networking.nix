@@ -20,5 +20,10 @@
 	};
   };
 
-  services.resolved.enable = true;
+  services.resolved = {
+    enable = true;
+    extraConfig = ''
+      DNSStubListener=no
+    '';
+  };
 }
