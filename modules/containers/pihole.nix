@@ -57,18 +57,9 @@
       "/home/jakub/docker-data/pihole/dnsmasq:/etc/dnsmasq.d"
     ];
 
-  extraOptions = [
-      "--network=host"
-      "--cap-add=NET_ADMIN"
-      "--label=traefik.enable=true"
-      "--label=traefik.http.routers.pihole.rule=Host(`pihole.home`)"
-      "--label=traefik.http.routers.pihole.entrypoints=websecure"
-      "--label=traefik.http.routers.pihole.tls=true"
-      "--label=traefik.http.routers.pihole.tls.certresolver=step"
-      "--label=traefik.http.services.pihole.loadbalancer.server.url=http://192.168.0.252:8053"
-	"--label=traefik.http.middlewares.pihole-slash.redirectregex.regex=^https://pihole.home$"
-	"--label=traefik.http.middlewares.pihole-slash.redirectregex.replacement=https://pihole.home/admin/"
-      "--label=traefik.http.routers.pihole.middlewares=pihole-slash"
-    ];
+	extraOptions = [
+	  "--network=host"
+	  "--cap-add=NET_ADMIN"
+	];
   };
 }

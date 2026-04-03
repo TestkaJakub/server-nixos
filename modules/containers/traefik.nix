@@ -52,6 +52,7 @@ in
       "${stepCert}:/certs/root_ca.crt:ro"
       "${acmeDir}:/acme"
       "${traefikYml}:/traefik.yml:ro"
+      "/home/jakub/docker-data/traefik/dynamic.yml:/traefik-dynamic.yml:ro"
     ];
 
     extraOptions = [

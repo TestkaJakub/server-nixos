@@ -10,6 +10,29 @@
   system.activationScripts.traefikConfig = {
     text = ''
       mkdir -p /home/jakub/docker-data/traefik
+      cat > /home/jakub/docker-data/traefik/dynamic.yml << 'EOF'
+      http:
+        routers:
+          pihole:
+            rule: "Host(`pihole.home`)"
+            entryPoints:
+              - websecure
+            middlewares:
+              - pihole-slash
+            tls:
+              certResolver: step
+            service: pihole
+        middlewares:
+          pihole-slash:
+            redirectRegex:
+              regex: "^https://pihole.home/$"
+              replacement: "https://pihole.home/admin/"
+        services:
+          pihole:
+            loadBalancer:
+              servers:
+                - url: "http://127.0.0.1:8053"
+      EOF
       cat > /home/jakub/docker-data/traefik/traefik.yml << 'TRAEFIKEOF'
 api:
   dashboard: true
@@ -31,10 +54,13 @@ entryPoints:
     address: ":443"
 
 providers:
-  docker:
-    endpoint: "unix:///var/run/docker.sock"
-    exposedByDefault: false
-    network: traefik
+   docker:
+     endpoint: "unix:///var/run/docker.sock"
+     exposedByDefault: false
+     network: traefik
+   file:
+     filename: "/traefik-dynamic.yml"
+     watch: true
 
 certificatesResolvers:
   step:
