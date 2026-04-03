@@ -9,13 +9,13 @@
 
 	firewall = {
 	  enable          = true;
-	  allowedTCPPorts = [ 22 80 443 53 ];
+	  allowedTCPPorts = [ 22 80 443 53 9000 ];  # added 9000
 	  allowedUDPPorts = [ 53 ];
 
 	  interfaces."eno1".allowedTCPPorts = [
-	    8080   # Traefik dashboard direct
-	    8053   # Pi-hole UI direct fallback
-	    9000   # step-ca (LAN access so you can copy the root cert from your PC)
+	    8080
+	    8053
+	    9000
 	  ];
 	};
   };
