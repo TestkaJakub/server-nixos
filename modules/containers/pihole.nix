@@ -52,7 +52,6 @@
 	  BLOCKING_ENABLED = "false";
 	  VIRTUAL_HOST     = "pihole.home";
 	  CORS_HOSTS       = "pihole.home";
-	  FTLCONF_webserver_port = "8053o";
 	};
     
     volumes = [
