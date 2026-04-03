@@ -55,6 +55,7 @@ in
     ];
 
     extraOptions = [
+      "--group-add=131"
       "--dns=172.17.0.1"
       "--network=traefik"
       # Host networking for step-ca: Traefik needs to reach localhost:9000
