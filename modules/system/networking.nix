@@ -13,7 +13,7 @@
 
 	firewall = {
 	  enable          = true;
-	  allowedTCPPorts = [ 22 80 443 53 9000 ];  # added 9000
+	  allowedTCPPorts = [ 22 80 443 53 9000 8053 ];  # added 9000
 	  allowedUDPPorts = [ 53 ];
 
 	  extraCommands = ''
