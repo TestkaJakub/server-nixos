@@ -37,26 +37,28 @@
           -exec cat {} \;
       '';
 
-      nrs = pkgs.writeShellScriptBin "nrs" ''
-        SAVED_DIR=$(pwd)
-        cd ~/server-nixos || exit 1
+	nrs = pkgs.writeShellScriptBin "nrs" ''
+	  SAVED_DIR=$(pwd)
+	  cd ~/server-nixos || exit 1
 
-        if ! git rev-parse --verify main &>/dev/null; then
-          git checkout -b main || exit 1
-        else
-          git checkout main || exit 1
-        fi
+	  if ! git rev-parse --verify main &>/dev/null; then
+	    git checkout -b main || exit 1
+	  else
+	    git checkout main || exit 1
+	  fi
 
-        git add . || exit 1
-        if ! git diff --cached --quiet; then
-          git commit -m "upgrade $(date '+%Y-%m-%d %H:%M')" || exit 1
-        fi
+	  git add . || exit 1
+	  if ! git diff --cached --quiet; then
+	    git commit -m "upgrade $(date '+%Y-%m-%d %H:%M')" || exit 1
+	  fi
 
-        sudo nixos-rebuild switch --flake ~/server-nixos#server
-        result=$?
-        cd "$SAVED_DIR" || exit 1
-        exit $result
-      '';
+	  git push -u origin main || exit 1
+
+	  sudo nixos-rebuild switch --flake ~/server-nixos#server
+	  result=$?
+	  cd "$SAVED_DIR" || exit 1
+	  exit $result
+	'';
 
       nrsr = pkgs.writeShellScriptBin "nrsr" ''
         if nrs; then
