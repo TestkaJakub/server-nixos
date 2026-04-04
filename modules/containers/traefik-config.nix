@@ -34,6 +34,8 @@ api:
   dashboard: true
   insecure: false
 
+ping: {}
+
 log:
   level: DEBUG
 

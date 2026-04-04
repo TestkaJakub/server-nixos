@@ -63,6 +63,7 @@ in
       # We use host.docker.internal instead of --network=host so other
       # container networking still works correctly.
       "--add-host=host.docker.internal:host-gateway"
+      "--health-cmd=traefik healthcheck --ping"
 
       "--label=traefik.enable=true"
       "--label=traefik.http.routers.dashboard.rule=Host(`traefik.home`)"
@@ -70,6 +71,7 @@ in
       "--label=traefik.http.routers.dashboard.tls=true"
       "--label=traefik.http.routers.dashboard.tls.certresolver=step"
       "--label=traefik.http.routers.dashboard.service=api@internal"
+      "--health-start-period=180s"   
     ];
   };
 }
