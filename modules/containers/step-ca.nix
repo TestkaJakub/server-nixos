@@ -63,4 +63,31 @@
       RestartSec = "5s";
     };
   };
+
+  systemd.services.step-ca-renew = {
+    description = "Renew step-ca server certificate";
+    after       = [ "step-ca.service" ];
+    requires    = [ "step-ca.service" ];
+  
+    serviceConfig = {
+      Type    = "oneshot";
+      User    = "jakub";
+      Group   = "jakub";
+      ExecStart = pkgs.writeShellScript "step-ca-renew" ''
+        ${pkgs.step-cli}/bin/step ca renew \
+          /home/jakub/.step/certs/intermediate_ca.crt \
+          /home/jakub/.step/secrets/intermediate_ca_key \
+          --force
+        systemctl restart step-ca
+      '';
+    };
+  };
+  
+  systemd.timers.step-ca-renew = {
+    wantedBy  = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "daily";
+      Persistent = true;
+    };
+  };
 }
