@@ -16,7 +16,7 @@
     environment = {
       VPN_SERVICE_PROVIDER = "mullvad";
       VPN_TYPE             = "wireguard";
-      SERVER_COUNTRIES     = "Poland";
+      SERVER_COUNTRIES     = "Chile";
     };
 
     ports = [
