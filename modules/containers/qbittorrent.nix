@@ -17,12 +17,13 @@
     autoStart = true;
     dependsOn = [ "gluetun" ];
 
-    environment = {
-      WEBUI_PORT = "8085";
-      PUID       = "1000";
-      PGID       = "1000";
-      TZ         = "Europe/Warsaw";
-    };
+	environment = {
+	  WEBUI_PORT    = "8085";
+	  WEBUI_ADDRESS = "0.0.0.0";
+	  PUID          = "1000";
+	  PGID          = "1000";
+	  TZ            = "Europe/Warsaw";
+	};
 
     volumes = [
       "/home/jakub/docker-data/qbittorrent-config:/config"
