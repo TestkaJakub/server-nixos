@@ -17,6 +17,13 @@ http:
       tls:
         certResolver: step
       service: pihole
+    ping:
+      rule: "Host(`traefik.home`) && Path(`/ping`)"
+      entryPoints:
+        - websecure
+      tls:
+        certResolver: step
+      service: ping@internal
   middlewares:
     pihole-slash:
       redirectRegex:
