@@ -28,11 +28,11 @@
 	extraOptions = [
 	  "--cap-add=NET_ADMIN"
 	  "--device=/dev/net/tun:/dev/net/tun"
-	  ''--health-cmd=["ping","-c","1","1.1.1.1"]''
+	  "--health-cmd=curl -sf https://ipinfo.io/ip || exit 1"
 	  "--health-interval=30s"
 	  "--health-timeout=10s"
 	  "--health-retries=3"
-	  "--health-start-period=60s"
+	  "--health-start-period=180s"
 	  "--network=traefik"
 	  "--label=traefik.enable=true"
 	  "--label=traefik.http.routers.qbittorrent.rule=Host(`qbittorrent.home`)"
