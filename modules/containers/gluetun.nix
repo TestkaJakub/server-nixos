@@ -28,7 +28,7 @@
 	extraOptions = [
 	  "--cap-add=NET_ADMIN"
 	  "--device=/dev/net/tun:/dev/net/tun"
-	  "--health-cmd=curl -sf https://ipinfo.io/ip || exit 1"
+	  "--health-cmd=wget -qO- http://127.0.0.1:9999 || exit 1"
 	  "--health-interval=30s"
 	  "--health-timeout=10s"
 	  "--health-retries=3"
