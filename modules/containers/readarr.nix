@@ -12,7 +12,7 @@
   ];
 
   virtualisation.oci-containers.containers.readarr = {
-    image = "lscr.io/linuxserver/readarr:nightly";
+    image = "ghcr.io/hotio/readarr:nightly";
     autoStart = true;
 
     environment = {
