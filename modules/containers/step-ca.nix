@@ -64,24 +64,23 @@
     };
   };
 
-  systemd.services.step-ca-renew = {
-    description = "Renew step-ca server certificate";
-    after       = [ "step-ca.service" ];
-    requires    = [ "step-ca.service" ];
-  
-    serviceConfig = {
-      Type    = "oneshot";
-      User    = "jakub";
-      Group   = "jakub";
-      ExecStart = pkgs.writeShellScript "step-ca-renew" ''
-        ${pkgs.step-cli}/bin/step ca renew \
-          /home/jakub/.step/certs/intermediate_ca.crt \
-          /home/jakub/.step/secrets/intermediate_ca_key \
-          --force
-        systemctl restart step-ca
-      '';
-    };
-  };
+	systemd.services.step-ca-renew = {
+	  description = "Renew step-ca intermediate certificate";
+	  serviceConfig = {
+	    Type    = "oneshot";
+	    User    = "root";  # 👈 root so it can restart step-ca
+	    ExecStart = pkgs.writeShellScript "step-ca-renew" ''
+	      ${pkgs.step-cli}/bin/step ca renew \
+	        /home/jakub/.step/certs/intermediate_ca.crt \
+	        /home/jakub/.step/secrets/intermediate_ca_key \
+	        --force \
+	        --offline \
+	        --ca-url https://localhost:9000 \
+	        --root /home/jakub/.step/certs/root_ca.crt
+	      systemctl restart step-ca
+	    '';
+	  };
+	};
   
 	systemd.timers.step-ca-renew = {
 	  wantedBy    = [ "timers.target" ];
