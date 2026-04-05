@@ -37,10 +37,24 @@
         "type": "github"
       }
     },
+    "private": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1775422817,
+        "narHash": "sha256-a64jrVGLbhKMslyNAlkMI3cHbUu9tBxz11bwGzyCOzQ=",
+        "path": "/home/jakub/server-private",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/jakub/server-private",
+        "type": "path"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "private": "private"
       }
     }
   },

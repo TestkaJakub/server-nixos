@@ -46,14 +46,11 @@
     # Lives at /home/jakub/server-private — not committed to git.
     # Drop any .nix file there and it gets picked up automatically on nrs.
     privateModules =
-      let privatePath = /home/jakub/server-private;
-      in nixpkgs.lib.optionals (builtins.pathExists privatePath) (
-        let
-          names    = builtins.attrNames (builtins.readDir privatePath);
-          nixFiles = builtins.filter (n: nixpkgs.lib.hasSuffix ".nix" n) names;
-        in
-          map (n: privatePath + "/${n}") nixFiles
-      );
+      let
+        names    = builtins.attrNames (builtins.readDir inputs.private);
+        nixFiles = builtins.filter (n: nixpkgs.lib.hasSuffix ".nix" n) names;
+      in
+        map (n: inputs.private + "/${n}") nixFiles;
 
   in
   {
