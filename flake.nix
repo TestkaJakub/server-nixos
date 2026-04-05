@@ -39,6 +39,20 @@
       system             = "x86_64-linux";
       config.allowUnfree = true;
     };
+
+    # ── Private modules ──────────────────────────────────────────────────────
+    # Lives at /home/jakub/server-private — not committed to git.
+    # Drop any .nix file there and it gets picked up automatically on nrs.
+    privateModules =
+      let privatePath = /home/jakub/server-private;
+      in nixpkgs.lib.optionals (builtins.pathExists privatePath) (
+        let
+          names    = builtins.attrNames (builtins.readDir privatePath);
+          nixFiles = builtins.filter (n: nixpkgs.lib.hasSuffix ".nix" n) names;
+        in
+          map (n: privatePath + "/${n}") nixFiles
+      );
+
   in
   {
     nixosConfigurations.server = nixpkgs.lib.nixosSystem {
@@ -48,7 +62,8 @@
       modules =
         (collectModules ./modules moduleBlacklist)
         ++ [ ./modules/system/hardware.nix ]
-        ++ [ home-manager.nixosModules.home-manager ];
+        ++ [ home-manager.nixosModules.home-manager ]
+        ++ privateModules;
 
       specialArgs = { inherit inputs; };
     };
