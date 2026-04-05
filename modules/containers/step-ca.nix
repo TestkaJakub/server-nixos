@@ -83,11 +83,11 @@
     };
   };
   
-  systemd.timers.step-ca-renew = {
-    wantedBy  = [ "timers.target" ];
-    timerConfig = {
-      OnCalendar = "daily";
-      Persistent = true;
-    };
-  };
+	systemd.timers.step-ca-renew = {
+	  wantedBy    = [ "timers.target" ];
+	  timerConfig = {
+	    OnCalendar = "*-*-* 06,18:00:00";  # 👈 runs at 6 AM and 6 PM
+	    Persistent = true;
+	  };
+	};
 }
