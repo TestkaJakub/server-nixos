@@ -8,12 +8,15 @@
 #   echo "192.168.0.252 jellyfin.home" >> /home/jakub/docker-data/pihole/pihole/custom.list
 #   docker exec pihole pihole reloaddns
 {
-  systemd.tmpfiles.rules = [
-    "d /home/jakub/docker-data/jellyfin-config 0755 jakub jakub -"
-    "d /mnt/data/media                          0775 jakub jakub -"
-    "d /mnt/data/media/movies                   0775 jakub jakub -"
-    "d /mnt/data/media/tv                       0775 jakub jakub -"
-  ];
+	systemd.tmpfiles.rules = [
+	  "d /home/jakub/docker-data/jellyfin-config 0755 jakub jakub -"
+	  "d /mnt/data/media                          0775 jakub jakub -"
+	  "d /mnt/data/media/movies                   0775 jakub jakub -"
+	  "d /mnt/data/media/tv                       0775 jakub jakub -"
+	  "d /mnt/data/media/music                    0775 jakub jakub -"
+	  "d /mnt/data/media/books                    0775 jakub jakub -"
+	  "d /mnt/data/media/adult                    0775 jakub jakub -"
+	];
 
   virtualisation.oci-containers.containers.jellyfin = {
     image     = "jellyfin/jellyfin:latest";
