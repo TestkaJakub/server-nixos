@@ -20,6 +20,8 @@
     environment = {
       TZ = "Europe/Warsaw";
     };
+    
+    environmentFiles = [ "/home/jakub/secrets/homarr.env" ];
 
     volumes = [
       "/home/jakub/docker-data/homarr-config:/appdata"
