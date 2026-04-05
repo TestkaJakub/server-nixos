@@ -12,7 +12,7 @@
   ];
 
   virtualisation.oci-containers.containers.readarr = {
-    image = "ghcr.io/hotio/readarr:latest";
+    image = "hotio/readarr:latest";
     autoStart = true;
 
     environment = {
