@@ -7,12 +7,14 @@
       url                    = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    private = {
+      url   = "path:/home/jakub/server-private";
+      flake = false;
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, ... } @ inputs:
   let
-    # ── Recursive module walker ─────────────────────────────────────────────
-    # Identical to the one in your PC flake.nix
     collectModules = dir: blacklist:
       let
         walk = prefix: entries:
