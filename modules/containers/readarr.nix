@@ -12,7 +12,7 @@
   ];
 
   virtualisation.oci-containers.containers.readarr = {
-    image     = "lscr.io/linuxserver/readarr:develop";
+    image = "lscr.io/linuxserver/readarr:latest";
     autoStart = true;
 
     environment = {
