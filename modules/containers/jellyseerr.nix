@@ -4,6 +4,10 @@
 # Web UI: https://jellyseerr.home
 # Connects to Jellyfin for auth, Radarr for movies, Sonarr for TV.
 #
+# Outbound traffic (TMDB API calls etc.) is routed through Gluetun's built-in
+# SOCKS5 proxy to work around ISP blocks on the movie database.
+# Gluetun exposes SOCKS5 on port 1080 — enabled via SOCKS5_ADDRESS below.
+#
 # To add DNS record:
 #   echo "192.168.0.252 jellyseerr.home" >> /home/jakub/docker-data/pihole/pihole/custom.list
 #   docker exec pihole pihole reloaddns
@@ -26,8 +30,14 @@
     autoStart = true;
 
     environment = {
-      LOG_LEVEL = "info";
-      TZ        = "Europe/Warsaw";
+      LOG_LEVEL  = "info";
+      TZ         = "Europe/Warsaw";
+      # Route outbound HTTP/HTTPS through Gluetun's SOCKS5 proxy.
+      # "gluetun" resolves inside the traefik Docker network.
+      HTTP_PROXY  = "socks5h://gluetun:1080";
+      HTTPS_PROXY = "socks5h://gluetun:1080";
+      # Don't proxy internal requests to your own services
+      NO_PROXY    = "localhost,127.0.0.1,radarr,sonarr,jellyfin,prowlarr,192.168.0.0/24,*.home";
     };
 
     volumes = [
@@ -46,7 +56,7 @@
   };
 
   systemd.services.docker-jellyseerr = {
-    after    = [ "docker-network-traefik.service" ];
-    requires = [ "docker-network-traefik.service" ];
+    after    = [ "docker-network-traefik.service" "docker-gluetun.service" ];
+    requires = [ "docker-network-traefik.service" "docker-gluetun.service" ];
   };
 }
