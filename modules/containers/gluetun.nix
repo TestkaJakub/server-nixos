@@ -21,6 +21,7 @@
       # Expose SOCKS5 proxy for other containers (e.g. jellyseerr)
       # listening on all interfaces so traefik-network containers can reach it
       SOCKS5_ADDRESS       = ":1080";
+      SOCKS5_ENABLED       = "on";
     };
 
     ports = [
