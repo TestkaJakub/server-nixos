@@ -55,11 +55,10 @@
     autoStart = true;
     dependsOn = [ "ryot-db" ];
 
-    environmentFiles = [ "/home/jakub/secrets/ryot.env" ];
-    environment = {
-      TZ           = "Europe/Warsaw";
-      DATABASE_URL = "postgres://ryot:$(cat /run/secrets/pg_pass)@ryot-db:5432/ryot";
-    };
+	environmentFiles = [ "/home/jakub/secrets/ryot.env" ];
+	environment = {
+	  TZ = "Europe/Warsaw";
+	};
 
     extraOptions = [
       "--network=traefik"
