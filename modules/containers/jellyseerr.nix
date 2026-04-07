@@ -34,8 +34,8 @@
       TZ         = "Europe/Warsaw";
       # Route outbound HTTP/HTTPS through Gluetun's SOCKS5 proxy.
       # "gluetun" resolves inside the traefik Docker network.
-      HTTP_PROXY  = "socks5h://gluetun:1080";
-      HTTPS_PROXY = "socks5h://gluetun:1080";
+		HTTP_PROXY  = "http://gluetun:8888";
+		HTTPS_PROXY = "http://gluetun:8888";
       # Don't proxy internal requests to your own services
       NO_PROXY    = "localhost,127.0.0.1,radarr,sonarr,jellyfin,prowlarr,192.168.0.0/24,*.home";
     };
