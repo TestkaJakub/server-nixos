@@ -67,7 +67,7 @@
       "--label=traefik.http.routers.ryot.entrypoints=websecure"
       "--label=traefik.http.routers.ryot.tls=true"
       "--label=traefik.http.routers.ryot.tls.certresolver=step"
-      "--label=traefik.http.services.ryot.loadbalancer.server.port=8000"
+      "--label=traefik.http.services.ryot.loadbalancer.server.port=5000"
     ];
   };
 
