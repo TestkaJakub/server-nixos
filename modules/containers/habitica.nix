@@ -52,7 +52,7 @@
 
   # ── App ───────────────────────────────────────────────────────────────────────
   virtualisation.oci-containers.containers.habitica = {
-    image     = "habitica/habitica:latest";
+    image = "docker.io/awinterstein/habitica-server:latest";
     autoStart = true;
     dependsOn = [ "habitica-db" ];
 
