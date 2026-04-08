@@ -36,6 +36,8 @@
 
     environmentFiles = [ "/home/jakub/secrets/habitica-db.env" ];
 
+    cmd = [ "--replSet" "rs" "--bind_ip_all" ];
+
     volumes = [
       "/home/jakub/docker-data/habitica-db:/data/db"
     ];
