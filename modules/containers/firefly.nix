@@ -113,7 +113,7 @@
   systemd.services.docker-firefly = {
     after    = [ "docker-network-traefik.service" "docker-firefly-db.service" ];
     requires = [ "docker-network-traefik.service" "docker-firefly-db.service" ];
-    serviceConfig.ExecStartPre = "/bin/sleep 15";
+    serviceConfig.ExecStartPre = "${pkgs.coreutils}/bin/sleep 15";
   };
 
   systemd.services.docker-firefly-cron = {
