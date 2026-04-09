@@ -37,6 +37,8 @@
 
     environmentFiles = [ "/home/jakub/secrets/firefly-db.env" ];
 
+    cmd = [ "--tc-heuristic-recover=rollback" ];
+
     volumes = [
       "/home/jakub/docker-data/firefly-db:/var/lib/mysql"
     ];
