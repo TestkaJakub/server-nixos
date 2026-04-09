@@ -23,7 +23,7 @@
 
     volumes = [
       "/home/jakub/docker-data/bazarr-config:/config"
-      "/mnt/data/media:/media"
+      "/mnt/data:/data"
     ];
 
     extraOptions = [
