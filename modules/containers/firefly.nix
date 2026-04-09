@@ -37,8 +37,6 @@
 
     environmentFiles = [ "/home/jakub/secrets/firefly-db.env" ];
 
-    cmd = [ "--tc-heuristic-recover=rollback" ];
-
     volumes = [
       "/home/jakub/docker-data/firefly-db:/var/lib/mysql"
     ];
@@ -104,10 +102,11 @@
   };
 
   # ── Ordering ──────────────────────────────────────────────────────────────────
-  systemd.services.docker-firefly-db = {
-    after    = [ "docker-network-traefik.service" ];
-    requires = [ "docker-network-traefik.service" ];
-  };
+	systemd.services.docker-firefly-db = {
+	  after    = [ "docker-network-traefik.service" ];
+	  requires = [ "docker-network-traefik.service" ];
+	  serviceConfig.ExecStartPre = "${pkgs.coreutils}/bin/rm -f /home/jakub/docker-data/firefly-db/tc.log";
+	};
 
 	systemd.services.docker-firefly = {
 	  after    = [ "docker-network-traefik.service" "docker-firefly-db.service" ];
