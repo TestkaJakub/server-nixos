@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 # ── Firefly III — personal finance manager ─────────────────────────────────────
 # Web UI: https://firefly.home
