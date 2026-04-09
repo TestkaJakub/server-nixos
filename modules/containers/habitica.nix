@@ -36,11 +36,12 @@
 
     environmentFiles = [ "/home/jakub/secrets/habitica-db.env" ];
 
-    cmd = [ "--replSet" "rs" "--bind_ip_all" ];
+    cmd = [ "--replSet" "rs" "--bind_ip_all" "--keyFile" "/etc/mongo/keyfile" ];
 
-    volumes = [
-      "/home/jakub/docker-data/habitica-db:/data/db"
-    ];
+	  volumes = [
+	    "/home/jakub/docker-data/habitica-db:/data/db"
+	    "/home/jakub/secrets/habitica-mongo-keyfile:/etc/mongo/keyfile:ro"
+	  ];
 
     extraOptions = [
       "--network=traefik"
