@@ -53,7 +53,6 @@
   virtualisation.oci-containers.containers.firefly = {
     image     = "fireflyiii/core:latest";
     autoStart = true;
-    dependsOn = [ "firefly-db" ];
 
     environmentFiles = [ "/home/jakub/secrets/firefly.env" ];
     environment = {
