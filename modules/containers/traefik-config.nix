@@ -24,11 +24,23 @@ http:
       tls:
         certResolver: step
       service: ping@internal
+    http-catchall:
+      rule: "HostRegexp(`{host:.+}`)"
+      entryPoints:
+        - web
+      priority: 1
+      middlewares:
+        - https-redirect
+      service: noop@internal
   middlewares:
     pihole-slash:
       redirectRegex:
         regex: "^https://pihole\\.home/?$"
         replacement: "https://pihole.home/admin/"
+    https-redirect:
+      redirectScheme:
+        scheme: https
+        permanent: true
   services:
     pihole:
       loadBalancer:
@@ -49,12 +61,12 @@ log:
 entryPoints:
   web:
     address: ":80"
-    http:
-      redirections:
-        entryPoint:
-          to: websecure
-          scheme: https
-          permanent: true
+    # http:
+    #   redirections:
+    #     entryPoint:
+    #       to: websecure
+    #       scheme: https
+    #       permanent: true
   websecure:
     address: ":443"
 
