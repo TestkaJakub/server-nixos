@@ -1,5 +1,10 @@
 { ... }:
 
+# ───── SearXNG ─────
+# Web UI: https://searxng.home
+# 
+# REMEMBER TO ADD DNS RECORD ON:
+# https://pihole.home
 {
 	# Setting up searxng docker directory
 	systemd.tmpfiles.rules = [
