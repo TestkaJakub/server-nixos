@@ -13,7 +13,7 @@ http:
       entryPoints:
         - websecure
       tls:
-        certresolver: step
+        certResolver: step
       service: cctv
     pihole:
       rule: "Host(`pihole.home`)"
@@ -56,7 +56,7 @@ http:
       loadBalancer:
         serversTransport: skipVerifyCctv
         servers:
-          - url: "http://192.168.0.253:8080"
+          - url: "https://192.168.0.253:443"
     pihole:
       loadBalancer:
         servers:
