@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 # ── Reactive Resume — self-hosted resume builder ───────────────────────────────
 # Web UI: https://resume.home
@@ -110,7 +110,7 @@
     after    = [ "docker-network-traefik.service" "docker-reactive-resume-db.service" "docker-reactive-resume-printer.service" ];
     requires = [ "docker-network-traefik.service" "docker-reactive-resume-db.service" "docker-reactive-resume-printer.service" ];
     serviceConfig = {
-      ExecStartPre = "/bin/sleep 10";
+      ExecStartPre = "${pkgs.coreutils}/bin/sleep 10";
       RestartSec   = "30s";
     };
   };
