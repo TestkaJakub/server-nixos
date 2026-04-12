@@ -53,7 +53,7 @@ http:
       loadBalancer:
         servers:
           - url: "http://192.168.0.253:8080"
-	pihole:
+    pihole:
       loadBalancer:
         servers:
           - url: "http://172.17.0.1:8053"
