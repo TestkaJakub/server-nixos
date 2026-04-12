@@ -48,15 +48,11 @@ http:
       redirectScheme:
         scheme: https
         permanent: true
-  serversTransports:
-    skipVerifyCctv:
-      insecureSkipVerify: true
   services:
     cctv:
       loadBalancer:
-        serversTransport: skipVerifyCctv
         servers:
-          - url: "https://192.168.0.253:443"
+          - url: "https://192.168.0.253:80"
     pihole:
       loadBalancer:
         servers:
