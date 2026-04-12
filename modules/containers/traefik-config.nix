@@ -48,9 +48,13 @@ http:
       redirectScheme:
         scheme: https
         permanent: true
+  serversTransports:
+    skipVerifyCctv:
+      insecureSkipVerify: true
   services:
     cctv:
       loadBalancer:
+        serversTransport: skipVerifyCctv
         servers:
           - url: "http://192.168.0.253:8080"
     pihole:
