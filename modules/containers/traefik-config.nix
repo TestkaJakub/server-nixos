@@ -8,13 +8,13 @@
       cat > /home/jakub/docker-data/traefik/dynamic.yml << 'DYNAMICEOF'
 http:
   routers:
-  	cctv:
-  	  rule: "Host(`cctv.home`)"
-  	  entryPoints:
-  	  	- websecure
- 	  tls:
- 	  	certresolver: step
- 	  service: cctv
+    cctv:
+      rule: "Host(`cctv.home`)"
+      entryPoints:
+        - websecure
+      tls:
+        certresolver: step
+      service: cctv
     pihole:
       rule: "Host(`pihole.home`)"
       entryPoints:
@@ -49,10 +49,10 @@ http:
         scheme: https
         permanent: true
   services:
-	cctv:
+    cctv:
       loadBalancer:
-   		servers:
-    	  - url: "http://192.168.0.253:8080"
+        servers:
+          - url: "http://192.168.0.253:8080"
 	pihole:
       loadBalancer:
         servers:
