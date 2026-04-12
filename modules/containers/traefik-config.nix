@@ -52,7 +52,7 @@ http:
     cctv:
       loadBalancer:
         servers:
-          - url: "https://192.168.0.253:80"
+          - url: "http://192.168.0.253:80"
     pihole:
       loadBalancer:
         servers:
