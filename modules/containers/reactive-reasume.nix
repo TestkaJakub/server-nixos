@@ -75,7 +75,6 @@
       APP_URL           = "https://resume.home";
       PRINTER_APP_URL   = "http://host.docker.internal:3000";
       PRINTER_ENDPOINT  = "ws://reactive-resume-printer:3000";
-      DATABASE_URL      = "postgresql://postgres:$(POSTGRES_PASSWORD)@reactive-resume-db:5432/postgres";
       FLAG_DISABLE_SIGNUPS = "true";  # set to false for first-time account creation
     };
 
