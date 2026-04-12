@@ -75,7 +75,7 @@
       APP_URL           = "https://resume.home";
       PRINTER_APP_URL   = "http://host.docker.internal:3000";
       PRINTER_ENDPOINT  = "ws://reactive-resume-printer:3000";
-      FLAG_DISABLE_SIGNUPS = "true";  # set to false for first-time account creation
+      FLAG_DISABLE_SIGNUPS = "false";  # set to false for first-time account creation
     };
 
     volumes = [
