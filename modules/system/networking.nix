@@ -7,9 +7,18 @@
     networkmanager = {
     	enable = true;
     	insertNameservers = [ "127.0.0.1" ];
+    	unmanaged = [ "enp5s0" ];
     };
     useDHCP               = lib.mkDefault true;
     nameservers = [ "127.0.0.1" "1.1.1.1" ];
+
+    interfaces.enp5s0 = {
+	    wakeOnLan.enable = true;
+	    ipv4.addresses = [{
+	      address = "192.168.0.251";
+	      prefixLength = 24;
+	    }];
+	  };
 
 	firewall = {
 	  enable          = true;
