@@ -1,5 +1,3 @@
-{ ... }:
-
 # ── Immich — photo & video backup ─────────────────────────────────────────────
 # Web UI: https://immich.home
 #
