@@ -11,6 +11,8 @@
     useDHCP               = lib.mkDefault true;
     nameservers = [ "127.0.0.1" "1.1.1.1" ];	  
 
+	defaultGateway = "192.168.0.1";
+
 	firewall = {
 	  enable          = true;
 	  allowedTCPPorts = [ 22 80 443 53 9000 8053 ];  # added 9000
