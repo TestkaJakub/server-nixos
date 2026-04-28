@@ -4,14 +4,24 @@
 # Mirrors system/networking.nix on the PC (server subset — no Tailscale/Mullvad).
 {
   networking = {
-    networkmanager = {
-    	enable = true;
-    	insertNameservers = [ "127.0.0.1" ];
-    };
-    useDHCP               = lib.mkDefault true;
-    nameservers = [ "127.0.0.1" "1.1.1.1" ];	  
+  	useDHCP = false;
+  	nameservers = [ "127.0.0.1" "1.1.1.1" ];
+    #networkmanager = {
+    #	enable = true;
+    #	insertNameservers = [ "127.0.0.1" ];
+    #};
+    #useDHCP               = lib.mkDefault false;
+    #nameservers = [ "127.0.0.1" "1.1.1.1" ];	  
 
-	defaultGateway = "192.168.0.1";
+	defaultGateway = {
+		address = "192.168.0.1";
+		interface = "enp6s0";	
+	};
+
+	interfaces.enp6s0.ipv4.addresses = [{
+		address = "192.168.0.252";
+		prefixLenfth = 24;
+	}];
 
 	firewall = {
 	  enable          = true;
