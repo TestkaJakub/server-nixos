@@ -20,7 +20,7 @@
 
 	interfaces.enp6s0.ipv4.addresses = [{
 		address = "192.168.0.252";
-		prefixLenfth = 24;
+		prefixLength = 24;
 	}];
 
 	firewall = {
